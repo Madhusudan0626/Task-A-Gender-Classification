@@ -2,18 +2,6 @@
 
 This repository contains the implementation of **Task A – Gender Classification** for the Comys Hackathon. The model uses **MobileNetV2** (pretrained on ImageNet) and classifies images into **male** or **female**.
 
----
-
-## ✅ Submission Guidelines
-
-- ✔️ Training and Validation Results with accuracy, precision, recall, and F1-score
-- ✔️ Well-documented source code
-- ✔️ Pretrained model weights (`model.h5`)
-- ✔️ Test script (`test_script.py`) to evaluate new test data
-- ✔️ This `README.md` file
-
----
-
 ## 📁 Project Directory Structure
 
 ```text
@@ -145,5 +133,5 @@ scikit-learn
 ## 📧 Contact
 
 **Author**: Madhusudan Chand  
-📧 Email: [your_email@example.com]  
-🔗 GitHub: [https://github.com/yourusername/gender-classification]
+📧 Email: [chandmadhusudan1212@gmail.com]  
+🔗 GitHub: [https://github.com/Madhusudan0626]
