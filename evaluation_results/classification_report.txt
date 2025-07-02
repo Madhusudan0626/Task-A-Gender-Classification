@@ -1,0 +1,24 @@
+Gender Classification Report
+===========================
+
+Best Threshold: 0.55
+Macro F1-Score: 0.9017
+
+Class       Precision  Recall    F1-Score  Support
+--------  -----------  --------  ---------  --------
+female        0.8947    0.8095     0.8500       105
+male          0.9388    0.9685     0.9534       317
+
+Accuracy:                            0.9289 (392/422)
+Macro Avg:     0.9168    0.8890     0.9017       422
+Weighted Avg:  0.9279    0.9289     0.9277       422
+
+Detailed Accuracy:
+- Female: 80.95% (85 correct out of 105)
+- Male:   96.85% (307 correct out of 317)
+
+Confusion Matrix:
+               Predicted
+               female  male
+Actual female      85     20
+Actual male        10    307
