@@ -123,11 +123,13 @@ The repository includes:
    
 5. Sample misclassifications
    - Female Incorrectly Predicted as Male
+     
     ![!Misclassified_female](./evaluation_results/misclassified/female_as_male/Ai_Sugiyama_0001.jpg)
 
     ![!Misclassified_female](./evaluation_results/misclassified/female_as_male/Elizabeth_Hill_0001.jpg)
     
    - Male Incorrectly Predicted as Female
+     
     ![!Misclassified_male](./evaluation_results/misclassified/male_as_female/Aaron_Peirsol_0001.jpg)
 
     ![!Misclassified_male](./evaluation_results/misclassified/male_as_female/Michele_Placido_0001.jpg)
