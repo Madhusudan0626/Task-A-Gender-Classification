@@ -91,7 +91,7 @@ python train_model.py \
 ## 📊 Evaluation
 ### Expected Test Directory Structure
 ```
-test_data/
+val/
 ├── male/
 └── female/
 ```
@@ -127,6 +127,8 @@ Gender Classification using MobileNetV2/
 ├── predict.py                # Single image prediction
 ├── model_balanced.h5         # Pretrained weights
 ├── requirements.txt          # Dependency list
+├── train
+├── val
 ├── evaluation_results/       # Generated during testing
 │   ├── confusion_matrix.png
 │   ├── classification_report.txt
