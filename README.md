@@ -1,137 +1,28 @@
-# 🧑‍🤝‍🧑 Gender Classification using MobileNetV2
+# 🧑‍🤝‍🧑 Gender Classification using MobileNetV2 – Task A
 
-This repository contains the implementation of **Task A – Gender Classification** for the Comys Hackathon. The model uses **MobileNetV2** (pretrained on ImageNet) and classifies images into **male** or **female**.
-
-## 📁 Project Directory Structure
-
-```text
-├── train/                    # Training images ('male/', 'female/')
-├── val/                      # Validation images ('male/', 'female/')
-├── model.h5                  # Pretrained model weights
-├── gender_classification.py  # Main training code
-├── test_script.py            # Evaluation script
-├── requirements.txt          # Python dependencies
-└── README.md                 # Project documentation
-```
+This repository contains the complete solution for **Task A – Gender Classification** for the **Comys Hackathon**. A modified **MobileNetV2** model is trained and evaluated to classify images into **male** or **female** categories with proper class balancing, focal loss, and data augmentation.
 
 ---
 
 ## 🧠 Model Architecture
 
-- Base Model: MobileNetV2 (frozen, pretrained on ImageNet)
-- Input Shape: (224, 224, 3)
-- Layers:
-  - GlobalAveragePooling2D
-  - Dropout(0.3)
-  - Dense(64, activation='relu')
-  - Dense(1, activation='sigmoid')
-- Loss: Binary Crossentropy
-- Optimizer: Adam (learning rate = 0.0001)
-- Epochs: 10
-- Batch Size: 32
+- **Base**: MobileNetV2 (pretrained on ImageNet)
+- **Trainable Layers**: Last 30 layers
+- **Custom Head**:
+  - `GlobalAveragePooling2D`
+  - `Dense(128, relu)`
+  - `Dropout(0.3)`
+  - `Dense(1, sigmoid)`
+- **Loss**: Focal Loss (α=0.5, γ=1.5)
+- **Optimizer**: Adam (LR = 1e-5)
+- **Batch Size**: 32
+- **Input Size**: (224, 224, 3)
 
----
+🧩 **Diagram**: The model architecture is saved as `model_architecture.png`.
 
-## 📊 Model Performance
+Place this image at the root of your repo.
 
-**Confusion Matrix:**
-
-```text
-          Predicted
-          Female  Male
-Actual
-Female      63     42
-Male         7    310
-```
-
-**Classification Report:**
-
-| Class   | Precision | Recall | F1-score | Support |
-|---------|-----------|--------|----------|---------|
-| Female  |   0.90    |  0.60  |   0.72   |   105   |
-| Male    |   0.88    |  0.98  |   0.93   |   317   |
-| Accuracy|     —     |   —    | **0.88** |   422   |
-| Macro avg | 0.89    | 0.79   | 0.82     |   422   |
-| Weighted avg | 0.89 | 0.88   | 0.88     |   422   |
-
----
-
-## 🔧 How to Train the Model
-
-```bash
-python gender_classification.py
-```
-
-This will:
-- Load and augment data from `train/` and `val/`
-- Train the MobileNetV2 model
-- Save the model as `model.h5`
-
----
-
-## 🧪 How to Evaluate on Test Data
-
-Ensure test data is structured like:
-
-```text
-test_data/
-├── male/
-├── female/
-```
-
-Run the evaluation script:
-
-```bash
-python test_script.py --data_path /path/to/test_data
-```
-
-The script will:
-- Load `model.h5`
-- Evaluate on test data
-- Print accuracy, precision, recall, F1-score, and confusion matrix
-
----
-
-## 💾 Load Pretrained Model
-
+Generate using:
 ```python
-from tensorflow.keras.models import load_model
-model = load_model("model.h5")
-```
-
----
-
-## 📦 Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### requirements.txt
-
-```text
-tensorflow
-numpy
-matplotlib
-seaborn
-scikit-learn
-```
-
----
-
-## 🧩 Notes
-
-- MobileNetV2 chosen for its efficiency and speed
-- Data augmentation improves generalization
-- Better recall for male class; female classification may improve with:
-  - Class balancing
-  - Fine-tuning deeper layers
-  - More data
-
----
-
-## 📧 Contact
-
-**Author**: Madhusudan Chand  
-📧 Email: [chandmadhusudan1212@gmail.com]  
-🔗 GitHub: [https://github.com/Madhusudan0626]
+from tensorflow.keras.utils import plot_model
+plot_model(model, to_file="model_architecture.png", show_shapes=True, show_layer_names=True)
