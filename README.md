@@ -1,4 +1,4 @@
-# Gender Classification using MobileNetV2
+# Task-A-Gender-Classification
 
 This repository implements **Gender Classification** using deep learning with MobileNetV2. The model is trained on augmented and class-balanced data to classify images into **male** or **female** categories with high accuracy.
 
