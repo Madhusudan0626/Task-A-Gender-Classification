@@ -121,7 +121,7 @@ The repository includes:
 
 ## 📁 Directory Structure
 ```
-gender-classification/
+Gender Classification using MobileNetV2/
 ├── train_model.py            # Training script
 ├── test_script.py            # Evaluation script
 ├── predict.py                # Single image prediction
@@ -150,13 +150,3 @@ Install all dependencies with:
 ```bash
 pip install -r requirements.txt
 ```
-
-## 📜 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📧 Contact
-For questions or issues, please open a GitHub issue in the repository.
-
----
-
-**Note:** For optimal performance, ensure your test data follows the same preprocessing as the training data (224×224 RGB images).
