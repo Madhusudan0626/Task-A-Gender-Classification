@@ -13,8 +13,6 @@ This repository implements **Gender Classification** using deep learning with Mo
 - [Visualization](#-visualization)
 - [Directory Structure](#-directory-structure)
 - [Requirements](#-requirements)
-- [License](#-license)
-- [Contact](#-contact)
 
 ## ✨ Features
 - **MobileNetV2** backbone with custom classifier head
