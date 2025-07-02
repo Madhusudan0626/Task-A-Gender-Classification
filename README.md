@@ -122,7 +122,17 @@ The repository includes:
    ![Loss Curves](./evaluation_results/confusion_matrix.png)
    
 5. Sample misclassifications
-6. Model architecture diagram (viewable with [Netron](https://netron.app))
+   - Female Incorrectly Predicted as Male
+    ![!Misclassified_female](./evaluation_results/misclassified/female_as_male/Ai_Sugiyama_0001.jpg)
+
+    ![!Misclassified_female](./evaluation_results/misclassified/female_as_male/Elizabeth_Hill_0001.jpg)
+    
+   - Male Incorrectly Predicted as Female
+    ![!Misclassified_male](./evaluation_results/misclassified/male_as_female/Aaron_Peirsol_0001.jpg)
+
+    ![!Misclassified_male](./evaluation_results/misclassified/male_as_female/Michele_Placido_0001.jpg)
+
+7. Model architecture diagram (viewable with [Netron](https://netron.app))
    
    ![Model Architecture](./training_plots/model_architecture.png)
    
