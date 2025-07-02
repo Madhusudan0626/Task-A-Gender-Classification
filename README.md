@@ -45,8 +45,8 @@ Focal Loss with parameters:
 ## 🛠 Installation
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/gender-classification.git
-cd gender-classification
+git clone https://github.com/Madhusudan0626/Task-A-Gender-Classification
+cd Task-A-Gender-Classification
 ```
 
 2. Install dependencies:
@@ -118,10 +118,14 @@ The repository includes:
    ![Accuracy Curves](./training_plots/accuracy_curve.png)
    ![Loss Curves](./training_plots/loss_curve.png)
 3. Confusion matrix
+   
    ![Loss Curves](./evaluation_results/confusion_matrix.png)
+   
 5. Sample misclassifications
 6. Model architecture diagram (viewable with [Netron](https://netron.app))
+   
    ![Model Architecture](./training_plots/model_architecture.png)
+   
 ## 📁 Directory Structure
 ```
 Gender Classification using MobileNetV2/
