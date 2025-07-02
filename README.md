@@ -65,8 +65,8 @@ You can view the model architecture using [**Netron**](https://netron.app):
 
 ### 📊 Final Evaluation Metrics
 
-✅ Best Threshold: 0.55
-🎯 Macro F1-Score: 0.9017
+- ✅ Best Threshold: 0.55
+- 🎯 Macro F1-Score: 0.9017
 Class	Precision	Recall	F1-Score	Support
 Female	0.8947	0.8095	0.8500	105
 Male	0.9388	0.9685	0.9534	317
