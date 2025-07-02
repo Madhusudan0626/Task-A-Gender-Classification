@@ -1,120 +1,162 @@
-# 🧑‍🤝‍🧑 Gender Classification using MobileNetV2
+# Gender Classification using MobileNetV2
 
-This repository implements **Task A – Gender Classification** using deep learning. It leverages **MobileNetV2**, trained on augmented and class-balanced data, to classify images into **male** or **female** categories with high accuracy.
+This repository implements **Gender Classification** using deep learning with MobileNetV2. The model is trained on augmented and class-balanced data to classify images into **male** or **female** categories with high accuracy.
 
----
+## Table of Contents
+- [Features](#-features)
+- [Model Architecture](#-model-architecture)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Training](#-training)
+- [Evaluation](#-evaluation)
+- [Results](#-results)
+- [Visualization](#-visualization)
+- [Directory Structure](#-directory-structure)
+- [Requirements](#-requirements)
+- [License](#-license)
+- [Contact](#-contact)
 
-## 📁 Project Structure
-```
-├── train_model.py # Training script with augmentation and oversampling
-├── test_script.py # Evaluation script with threshold tuning
-├── model_balanced.h5 # Pretrained model weights
-├── model_architecture.png # Visual diagram of the model
-├── confusion_matrix.png # Confusion matrix plot
-├── Screenshot-*.png # Training plots (accuracy/loss)
-├── misclassified/ # Saved misclassified validation images
-└── README.md
-```
----
+## ✨ Features
+- **MobileNetV2** backbone with custom classifier head
+- **Focal Loss** implementation for handling class imbalance
+- **Data augmentation** with rotation, zoom, shear, and brightness variation
+- **Class balancing** through oversampling and custom weights
+- **Threshold tuning** for optimal classification
+- **Comprehensive evaluation** with precision, recall, F1-score
+- **Visualization tools** for model performance
 
 ## 🧠 Model Architecture
+### Backbone
+- Pretrained MobileNetV2 (ImageNet weights)
 
-- **Backbone**: MobileNetV2 (pretrained on ImageNet)
-- **Classifier Head**:
-  - `GlobalAveragePooling2D`
-  - `Dense(128, activation='relu')`
-  - `Dropout(0.3)`
-  - `Dense(1, activation='sigmoid')`
-- **Loss Function**: Focal Loss (α = 0.5, γ = 1.5)
+### Classifier Head
+```python
+GlobalAveragePooling2D()
+Dense(128, activation='relu')
+Dropout(0.3)
+Dense(1, activation='sigmoid')
+```
 
-### 🔍 Visualizing Model Diagram with Netron
+### Loss Function
+Focal Loss with parameters:
+- α = 0.5
+- γ = 1.5
 
-You can view the model architecture using [**Netron**](https://netron.app):
+## 🛠 Installation
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/gender-classification.git
+cd gender-classification
+```
 
-1. Go to: https://netron.app  
-2. Drag and drop `model_balanced.h5`
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-### ⚙️ Training Configuration
+## 🚀 Usage
+### Quick Prediction
+```bash
+python predict.py --image_path path/to/image.jpg --model_path model_balanced.h5
+```
 
-    Input Size: 224 × 224
+### Full Evaluation
+```bash
+python test_script.py \
+    --data_path /path/to/test_data \
+    --model_path model_balanced.h5 \
+    --output_dir evaluation_results
+```
 
-    Epochs: 25
+## 🏋️ Training
+To train the model from scratch:
+```bash
+python train_model.py \
+    --data_path /path/to/training_data \
+    --epochs 25 \
+    --batch_size 32 \
+    --output_model model_new.h5
+```
 
-    Batch Size: 32
+### Training Parameters
+| Parameter          | Value       |
+|--------------------|-------------|
+| Input Size         | 224 × 224   |
+| Epochs             | 25          |
+| Batch Size         | 32          |
+| Optimizer          | Adam (1e-5) |
+| Early Stopping     | Patience=5  |
+| Learning Rate Scheduler | ReduceLROnPlateau |
 
-    Optimizer: Adam (learning rate = 1e-5)
-
-    EarlyStopping + ReduceLROnPlateau callbacks
-
-### 📈 Data Augmentation
-
-    Rotation, zoom, shear
-
-    Width/height shift
-
-    Brightness variation
-
-    Horizontal flip
-
-### ⚖️ Class Balancing
-
-    Female class was oversampled
-
-    Custom class weights applied:
-    { female: 1.0, male: 0.9 }
-
-### 📊 Final Evaluation Metrics
-
-- ✅ Best Threshold: 0.55
-- 🎯 Macro F1-Score: 0.9017
-Class	Precision	Recall	F1-Score	Support
-Female	0.8947	0.8095	0.8500	105
-Male	0.9388	0.9685	0.9534	317
-Accuracy	0.9289			422
-Macro Avg	0.9168	0.8890	0.9017	
-Weighted Avg	0.9279	0.9289	0.9277	
-
-    👩 Female Accuracy: 80.95% (85/105)
-
-    👨 Male Accuracy: 96.85% (307/317)
-
-### 📉 Training Curves
-Accuracy	Loss
-	
-🔎 Confusion Matrix
-
-Confusion Matrix
-
-### 🚀 Inference & Testing
-
-Evaluate the model on new data using the test_script.py:
-
-python test_script.py --data_path /path/to/test_data --model_path model_balanced.h5
-
-### 📥 Expected Test Directory Structure
-
+## 📊 Evaluation
+### Expected Test Directory Structure
+```
 test_data/
 ├── male/
 └── female/
+```
 
-### 📤 Outputs
+### Output Metrics
+The evaluation script generates:
+- Classification report (precision, recall, F1-score)
+- Confusion matrix visualization
+- Misclassified examples
 
-    ✅ Threshold-optimized classification report
+## 📈 Results
+### Final Evaluation Metrics
+| Class   | Precision | Recall | F1-Score | Support |
+|---------|-----------|--------|----------|---------|
+| Female  | 0.8947    | 0.8095 | 0.8500   | 105     |
+| Male    | 0.9388    | 0.9685 | 0.9534   | 317     |
 
-    📊 Confusion matrix (confusion_matrix.png)
+**Overall Accuracy:** 92.89%  
+**Macro F1-Score:** 0.9017
 
-    ❌ Misclassified images saved to misclassified/ directory
+## 📊 Visualization
+The repository includes:
+1. Training curves (accuracy/loss)
+2. Confusion matrix
+3. Sample misclassifications
+4. Model architecture diagram (viewable with [Netron](https://netron.app))
 
-### 💾 Pretrained Model
+## 📁 Directory Structure
+```
+gender-classification/
+├── train_model.py            # Training script
+├── test_script.py            # Evaluation script
+├── predict.py                # Single image prediction
+├── model_balanced.h5         # Pretrained weights
+├── requirements.txt          # Dependency list
+├── evaluation_results/       # Generated during testing
+│   ├── confusion_matrix.png
+│   ├── classification_report.txt
+│   └── misclassified/
+├── training_plots/           # Generated during training
+│   ├── accuracy_curve.png
+│   └── loss_curve.png
+└── README.md
+```
 
-The trained model is saved as:
+## 📦 Requirements
+- Python 3.8+
+- TensorFlow 2.9+
+- scikit-learn
+- matplotlib
+- seaborn
+- numpy
+- OpenCV
 
-model_balanced.h5
+Install all dependencies with:
+```bash
+pip install -r requirements.txt
+```
 
-It will automatically load in test_script.py.
+## 📜 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-### 📦 Requirements
+## 📧 Contact
+For questions or issues, please open a GitHub issue in the repository.
 
-Ensure the following dependencies are installed:
+---
 
-pip install tensorflow>=2.9 scikit-learn seaborn matplotlib numpy
+**Note:** For optimal performance, ensure your test data follows the same preprocessing as the training data (224×224 RGB images).
