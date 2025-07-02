@@ -98,7 +98,7 @@ val/
 
 ### Output Metrics
 The evaluation script generates:
-- Classification report (precision, recall, F1-score)
+- Classification report (precision, recall, F1-score) 
 - Confusion matrix visualization
 - Misclassified examples
 
@@ -115,10 +115,13 @@ The evaluation script generates:
 ## 📊 Visualization
 The repository includes:
 1. Training curves (accuracy/loss)
-2. Confusion matrix
-3. Sample misclassifications
-4. Model architecture diagram (viewable with [Netron](https://netron.app))
-
+   ![Accuracy Curves](./training_plots/accuracy_curve.png)
+   ![Loss Curves](./training_plots/loss_curve.png)
+3. Confusion matrix
+   ![Loss Curves](./evaluation_results/confusion_matrix.png)
+5. Sample misclassifications
+6. Model architecture diagram (viewable with [Netron](https://netron.app))
+   ![Model Architecture](./training_plots/model_architecture.png)
 ## 📁 Directory Structure
 ```
 Gender Classification using MobileNetV2/
@@ -131,11 +134,12 @@ Gender Classification using MobileNetV2/
 ├── val
 ├── evaluation_results/       # Generated during testing
 │   ├── confusion_matrix.png
-│   ├── classification_report.txt
+│   └── classification_report.txt
 │   └── misclassified/
 ├── training_plots/           # Generated during training
 │   ├── accuracy_curve.png
 │   └── loss_curve.png
+│   └── model_architecture.png
 └── README.md
 ```
 
